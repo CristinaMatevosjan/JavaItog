@@ -1,0 +1,247 @@
+﻿root@kris-VirtualBox:~# cat > pets
+
+
+cat
+
+
+dog
+root@kris-VirtualBox:~# cat >> pets
+
+
+chomjack
+
+
+root@kris-VirtualBox:~# cat pets
+
+
+cat
+
+
+dogchomjack
+
+
+root@kris-VirtualBox:~# cat > pack_animals
+
+
+horse donkey camel
+
+
+root@kris-VirtualBox:~# cat pack_animals 
+
+
+horse donkey camel
+
+
+root@kris-VirtualBox:~# cat pets pack_animals > human_friends
+
+
+root@kris-VirtualBox:~# cat human_friends 
+
+
+cat
+
+
+dogchomjack
+
+
+horse donkey camel
+
+
+root@kris-VirtualBox:~# mkdir -p  animals
+
+
+root@kris-VirtualBox:~# cd animals/
+
+
+root@kris-VirtualBox:~/animals# mv /root/human_friends /root/animals/
+
+
+root@kris-VirtualBox:~/animals# ls
+
+
+human_friends
+
+
+root@kris-VirtualBox:~# sudo apt install mysql-server mysql-client
+Настраивается пакет mysql-server (8.0.32-0ubuntu0.22.04.2) …
+
+
+Обрабатываются триггеры для man-db (2.10.2-1) …
+
+
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.1) …
+
+
+root@kris-VirtualBox:~# mysql --version 
+
+
+mysql  Ver 8.0.32-0ubuntu0.22.04.2 for Linux on x86_64 ((Ubuntu))
+
+
+root@kris-VirtualBox:~# wget https://download.virtualbox.org/virtualbox/7.0.6/virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb
+
+
+--2023-04-10 22:47:20--  https://download.virtualbox.org/virtualbox/7.0.6/virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb
+
+
+Распознаётся download.virtualbox.org (download.virtualbox.org)… 2.22.40.77
+
+
+Подключение к download.virtualbox.org (download.virtualbox.org)|2.22.40.77|:443... соединение установлено.
+
+
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+
+
+Длина: 92337724 (88M) [text/plain]
+
+
+Сохранение в: ‘virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb’
+
+
+
+
+
+
+virtualbox-7.0_7.0.6-155176 100%[========================================>]  88,06M  6,21MB/s    за 13s     
+
+
+
+
+
+
+2023-04-10 22:47:34 (6,57 MB/s) - ‘virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb’ сохранён [92337724/92337724]
+
+
+
+
+
+
+root@kris-VirtualBox:~# ls
+
+
+animals   snap  virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb
+
+
+root@kris-VirtualBox:~# dpkg -i virtualbox-7.0_7.0.6-155176~Ubuntu~jammy_amd64.deb
+
+
+root@kris-VirtualBox:~# apt -f install 
+
+
+root@kris-VirtualBox:~# cd /etc/apt
+
+
+root@kris-VirtualBox:/etc/apt# ll
+
+
+итого 48
+
+
+drwxr-xr-x   8 root root  4096 апр 10 15:20 ./
+
+
+drwxr-xr-x 134 root root 12288 апр 10 22:54 ../
+
+
+drwxr-xr-x   2 root root  4096 апр  9 17:32 apt.conf.d/
+
+
+drwxr-xr-x   2 root root  4096 апр  8  2022 auth.conf.d/
+
+
+drwxr-xr-x   2 root root  4096 апр 10 14:51 keyrings/
+
+
+drwxr-xr-x   2 root root  4096 апр  8  2022 preferences.d/
+
+
+-rw-r--r--   1 root root  2824 апр  9 17:32 sources.list
+
+
+drwxr-xr-x   2 root root  4096 апр 10 15:22 sources.list.d/
+
+
+-rw-r--r--   1 root root  2330 апр 10 15:03 trusted.gpg~
+
+
+drwxr-xr-x   2 root root  4096 апр 10 14:15 trusted.gpg.d/
+
+
+root@kris-VirtualBox:/etc/apt# cd sources.list.d/
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# ll
+
+
+итого 12
+
+
+drwxr-xr-x 2 root root 4096 апр 10 15:22 ./
+
+
+drwxr-xr-x 8 root root 4096 апр 10 15:20 ../
+
+
+-rw-r--r-- 1 root root  112 апр 10 10:15 docker.list
+root@kris-VirtualBox:/etc/apt/sources.list.d# cat > vb.list
+
+
+deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian <mydist> contrib
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# nano vb.list 
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# apt update
+
+
+ущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+
+
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease                                           
+
+
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease                                         
+
+
+Сущ:4 http://security.ubuntu.com/ubuntu jammy-security InRelease                                            
+
+
+Сущ:5 https://download.docker.com/linux/ubuntu jammy InRelease                                              
+
+
+Пол:6 https://download.virtualbox.org/virtualbox/debian jammy InRelease [4 428 B]                           
+
+
+Пол:7 https://download.virtualbox.org/virtualbox/debian jammy/contrib amd64 Packages [1 471 B]
+
+
+Получено 5 899 B за 4с (1 547 B/s)         
+
+
+Чтение списков пакетов… Готово
+
+
+Построение дерева зависимостей… Готово
+
+
+Чтение информации о состоянии… Готово         
+
+
+Может быть обновлено 274 пакета. Запустите «apt list --upgradable» для их показа.
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# find / -name virtual*
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d#  sudo dpkg -S /usr/bin/virtualbox
+
+
+virtualbox-7.0: /usr/bin/virtualbox
+
+
+root@kris-VirtualBox:/etc/apt/sources.list.d# sudo dpkg --purge virtualbox-7.0
