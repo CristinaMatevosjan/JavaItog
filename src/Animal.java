@@ -7,7 +7,7 @@ public abstract class Animal {
 
     private String dob;
 
-    private AnimalComands comands.;
+    private AnimalComands comands;
 
 
     protected Animal(int id, int number, String name, String dob, AnimalComands comands) {
@@ -35,7 +35,7 @@ public abstract class Animal {
         return dob;
     }
 
-    public AnimalComands getComands() {
+    public AnimalComands getAnimalComands() {
         return comands;
     }
 

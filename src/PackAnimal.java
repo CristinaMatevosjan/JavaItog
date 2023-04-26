@@ -10,7 +10,7 @@ public abstract class PackAnimal extends Animal  {
     @Override
     public String toString() {
         return String.format("Id: %d; Колличество: %d; Имя: %s; Дата рождения: %s; Команды: %s",
-                this.getId(), this.getNumber(), this.getName(), this.getDob(),this.getComands());
+                this.getId(), this.getNumber(), this.getName(), this.getDob(),this.getAnimalComands());
     }
 
 }

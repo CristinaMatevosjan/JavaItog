@@ -2,17 +2,28 @@ import java.util.EnumSet;
 import java.util.Scanner;
 
 public class AnimalComands {
-    private EnumSet<Comands> comands=EnumSet.noneOf(Comands.class);
+    private EnumSet<Comands> comands;
 
     public EnumSet<Comands> getComands() {
         return comands;
     }
 
-    public EnumSet<Comands> trainNewTeam(EnumSet<Comands> comands, Scanner input) {
+    public void init(EnumSet<Comands> comands) {
+        this.comands = comands;
+    }
+
+    public AnimalComands newAnimalComands() {
+        AnimalComands ac = new AnimalComands();
+        EnumSet<Comands> comands1 = EnumSet.noneOf(Comands.class);
+        ac.init(comands1);
+        return ac;
+    }
+
+    public AnimalComands trainNewTeam(Scanner input) {
         System.out.println("1. Обучить команде STOP \n" +
                 "2. Обучить команде VOICE \n " +
                 "3. Обучить команде TO_ME \n" +
-                "4. Обучить команде FORWARD \n"+
+                "4. Обучить команде FORWARD \n" +
                 "5. Обучить команде BUT_BUT\n" +
                 "6. Обучить команде GO_AHEAD\n" +
                 "7. Обучить команде YOU_STUPID_BRUTE\n" +
@@ -24,44 +35,51 @@ public class AnimalComands {
                 "Выберите пункт меню: ");
 
         int choice = input.nextInt();
+        AnimalComands animalComands = new AnimalComands();
+        animalComands.newAnimalComands();
         switch (choice) {
             case 1:
-                comands.add(Comands.STOP);
+                animalComands.getComands().add(Comands.STOP);
                 break;
             case 2:
-                comands.add(Comands.VOICE);
+                animalComands.getComands().add(Comands.VOICE);
                 break;
             case 3:
-                comands.add(Comands.TO_ME);
+                animalComands.getComands().add(Comands.TO_ME);
                 break;
             case 4:
-                comands.add(Comands.FORWARD);
+                animalComands.getComands().add(Comands.FORWARD);
                 break;
             case 5:
-                comands.add(Comands.BUT_BUT);
+                animalComands.getComands().add(Comands.BUT_BUT);
                 break;
             case 6:
-                comands.add(Comands.GO_AHEAD);
+                animalComands.getComands().add(Comands.GO_AHEAD);
                 break;
             case 7:
-                comands.add(Comands.YOU_STUPID_BRUTE);
+                animalComands.getComands().add(Comands.YOU_STUPID_BRUTE);
                 break;
             case 8:
-                comands.add(Comands.JUMP);
+                animalComands.getComands().add(Comands.JUMP);
                 break;
             case 9:
-                comands.add(Comands.SIT);
+                animalComands.getComands().add(Comands.SIT);
                 break;
             case 10:
-                comands.add(Comands.GIVE_ME_A_PAW);
+                animalComands.getComands().add(Comands.GIVE_ME_A_PAW);
                 break;
             case 11:
-                comands.add(Comands.SPIT);
+                animalComands.getComands().add(Comands.SPIT);
                 break;
 
             case 12:
                 break;
         }
-        return comands;
+        return animalComands;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Команды: %s", this.comands);
     }
 }

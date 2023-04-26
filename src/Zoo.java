@@ -8,7 +8,7 @@ public class Zoo {
     Scanner sc=new Scanner(System.in);
        public static ArrayList<Animal> allAnimal = new ArrayList<>();
     {
-        //allAnimal.add(new Cat(1, "Вася", 1, "12.03.2020",));
+
 
     }
 
@@ -21,7 +21,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+        AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -32,7 +32,7 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = animalComands.trainNewTeam(animalComands.getComands(),sc );
+        set = animalComands.trainNewTeam(sc );
 
         Zoo.allAnimal.add(new Cat(id, number, name, dob, set ));
     }
@@ -42,7 +42,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+       AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -53,10 +53,10 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = trainNewTeam   //input.nextInt();
+        set = animalComands.trainNewTeam(sc );
 
 
-        Zoo.allAnimal.add(new Dog(id, number, name, dob,  ));
+        Zoo.allAnimal.add(new Dog(id, number, name, dob, set ));
     }
 
     public void addHamster(Scanner input){
@@ -64,7 +64,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+        AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -75,10 +75,10 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = trainNewTeam   //input.nextInt();
+        set = animalComands.trainNewTeam(sc );
 
 
-        Zoo.allAnimal.add(new Hamster(id, number, name, dob,  ));
+        Zoo.allAnimal.add(new Hamster(id, number, name, dob, set ));
 
         }
 
@@ -87,7 +87,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+        AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -98,9 +98,9 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = trainNewTeam   //input.nextInt();
+        set = animalComands.trainNewTeam(sc );
 
-        Zoo.allAnimal.add(new Horse(id, number, name, dob,  ));
+        Zoo.allAnimal.add(new Horse(id, number, name, dob,set ));
 
     }
 
@@ -109,7 +109,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+        AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -120,9 +120,9 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = trainNewTeam   //input.nextInt();
+        set = animalComands.trainNewTeam(sc );
 
-        Zoo.allAnimal.add(new Donkey(id, number, name, dob,  ));
+        Zoo.allAnimal.add(new Donkey(id, number, name, dob, set ));
 
         }
 
@@ -131,7 +131,7 @@ public class Zoo {
         int number;
         String name;
         String dob;
-        EnumSet<Comands> set;
+        AnimalComands set;
 
         System.out.print("Id: ");
         id = input.nextInt();
@@ -142,9 +142,9 @@ public class Zoo {
         System.out.print("Дата рождения: ");
         dob = input.next();
         System.out.print("Команды?: ");
-        set = trainNewTeam   //input.nextInt();
+        set = animalComands.trainNewTeam(sc );
 
-        Zoo.allAnimal.add(new Camel(id, number, name, dob,  ));
+        Zoo.allAnimal.add(new Camel(id, number, name, dob, set ));
 
         }
 
@@ -164,12 +164,7 @@ public class Zoo {
 
     void showListComands(int num){
         System.out.println(allAnimal.get(num));
-        if (allAnimal.get(num) instanceof Pets){
-            ((Pets)allAnimal.get(num)).;
-        }
-        if (allAnimal.get(num) instanceof PackAnimal){
-            ((PackAnimal)allAnimal.get(num)).;
-        }
+        System.out.println(allAnimal.get(num).getAnimalComands().getComands().toString());
     }
 
 }
